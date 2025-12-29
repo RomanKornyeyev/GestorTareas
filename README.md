@@ -9,6 +9,13 @@ App para gestionar tareas.
 - SQL Server
 - MVC
 
+## RESTAURAR DEPENDENCIAS:
+
+```bash
+dotnet restore
+dotnet build
+```
+
 ## DEPENDENCIAS:
 
 ```bash
@@ -17,6 +24,8 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet add package Microsoft.EntityFrameworkCore.Tools
 dotnet tool install --global dotnet-ef
 ```
+
+(opcioinal): nugget EF Core Power Tools (Extensiones > Administrar extensiones)
 
 ## MIGRACIONES:
 
