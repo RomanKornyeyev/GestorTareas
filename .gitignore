@@ -1,0 +1,67 @@
+############################
+# Build results
+############################
+bin/
+obj/
+
+############################
+# Visual Studio
+############################
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+############################
+# Rider / JetBrains
+############################
+.idea/
+*.sln.iml
+
+############################
+# VS Code
+############################
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+############################
+# ASP.NET / .NET
+############################
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+############################
+# Publish
+############################
+publish/
+wwwroot/lib/
+
+############################
+# NuGet
+############################
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+
+############################
+# OS / Misc
+############################
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+############################
+# Secrets / Config
+############################
+appsettings.Development.json
+appsettings.*.Local.json
+secrets.json
