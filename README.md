@@ -1,33 +1,50 @@
-GESTOR DE TAREAS (MVC)
+# GESTOR DE TAREAS (MVC)
 
-TECNOLOGÕAS:
+App para gestionar tareas.
+
+## TECNOLOG√çAS:
+
 - .NET 10
 - Entity Framework Core
 - SQL Server
 - MVC
 
-DEPENDENCIAS:
+## DEPENDENCIAS:
+
+```bash
 dotnet add package Microsoft.EntityFrameworkCore
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet add package Microsoft.EntityFrameworkCore.Tools
 dotnet tool install --global dotnet-ef
+```
 
-MIGRACIONES:
+## MIGRACIONES:
+
+```bash
 dotnet ef migrations add [[NombreMigracion]]
 dotnet ef database update
+```
 
-(revertir a una migraciÛn anterior):
+(revertir a una migraci√≥n anterior):
+
+```bash
 dotnet ef migrations list (muestra la lista de migraciones aplicadas)
-dotnet ef database update 20251228xxxx_Anterior (vuelve a la migraciÛn especificada)
+dotnet ef database update 20251228xxxx_Anterior (vuelve a la migraci√≥n especificada)
 dotnet ef migrations remove (borra las migraciones no aplicadas)
+```
 
-CACH…:
+## CACH√â:
+
+```bash
 dotnet clean
 dotnet build
+```
 
-SQL SEGUNDO PLANO (DETENER, LEVANTAR):
+## SQL SEGUNDO PLANO (DETENER, LEVANTAR):
+
+```bash
 SqlLocalDB info (info servers locales)
 SqlLocalDB info [[[NOMBRE_SERVER]]] (info detallada)
 SqlLocalDB stop MSSQLLocalDB -k (detener)
 SqlLocalDB start MSSQLLocalDB (levantar, aunque se hace auto)
-
+```
