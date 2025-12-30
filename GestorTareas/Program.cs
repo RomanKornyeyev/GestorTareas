@@ -20,6 +20,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     )
 );
 
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: false)
+    .AddJsonFile("appsettings.Local.json", optional: true);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
