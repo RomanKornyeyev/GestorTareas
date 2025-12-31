@@ -31,6 +31,8 @@ namespace GestorTareas.Models.Entities
         [MaxLength(250)]
         public string Email { get; set; } = null!;
 
+        public string NormalizedEmail { get; set; } = null!;
+
         // Navegación inversa
         public ICollection<Token> Tokens { get; set; } = new List<Token>();
 

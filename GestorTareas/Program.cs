@@ -1,10 +1,17 @@
 using GestorTareas.Data;
+using GestorTareas.Models.Entities;
+using GestorTareas.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IUserStore<User>, UserStore>();
+builder.Services.AddIdentityCore<User>();
 
 // Registrar el DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
