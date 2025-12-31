@@ -4,10 +4,8 @@ App para gestionar tareas.
 
 ## TECNOLOGÍAS:
 
-- .NET 10
-- Entity Framework Core
+- .NET Core 10 (MVC, EF)
 - SQL Server
-- MVC
 
 ## RESTAURAR DEPENDENCIAS:
 
@@ -19,13 +17,17 @@ dotnet build
 ## DEPENDENCIAS:
 
 ```bash
+# DB
 dotnet add package Microsoft.EntityFrameworkCore
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet add package Microsoft.EntityFrameworkCore.Tools
 dotnet tool install --global dotnet-ef
+
+# Auth
+dotnet add package Microsoft.EntityFrameworkCore
 ```
 
-(opcioinal): nugget EF Core Power Tools (Extensiones > Administrar extensiones)
+(opcioinal, recomendable): nugget EF Core Power Tools (Extensiones > Administrar extensiones)
 
 ## MIGRACIONES:
 
