@@ -7,23 +7,64 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GestorTareas.Data;
 using GestorTareas.Models.Entities;
+using GestorTareas.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace GestorTareas.Controllers
 {
     public class UsersController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly UserManager<User> userManager;
 
-        public UsersController(AppDbContext context)
-        {
-            _context = context;
-        }
+        private readonly AppDbContext _context;
 
         // GET: Users
         public async Task<IActionResult> Index()
         {
             return View(await _context.Users.ToListAsync());
         }
+
+        public UsersController(UserManager<User> userManager, AppDbContext context)
+        {
+            this.userManager = userManager;
+            _context = context;
+        }
+        public IActionResult Register ()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = new User() { Email = model.Email };
+            var resultado = await userManager.CreateAsync(user, model.Password);
+
+            if (resultado.Succeeded)
+            {
+                return RedirectToAction("Index");
+            } else
+            {
+                foreach (var error in resultado.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+
+                return View(model);
+            }
+        }
+
+
+
+        /*
+
+
+
 
         // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -153,5 +194,7 @@ namespace GestorTareas.Controllers
         {
             return _context.Users.Any(e => e.Id == id);
         }
+
+        */
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestorTareas.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251229170402_CreandoEntidadesRestantes")]
+    [Migration("20251230211528_CreandoEntidadesRestantes")]
     partial class CreandoEntidadesRestantes
     {
         /// <inheritdoc />
@@ -92,7 +92,6 @@ namespace GestorTareas.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -103,7 +102,6 @@ namespace GestorTareas.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Subtitle")
-                        .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -190,6 +188,9 @@ namespace GestorTareas.Migrations
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .IsRequired()

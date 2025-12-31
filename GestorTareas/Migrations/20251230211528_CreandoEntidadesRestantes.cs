@@ -11,6 +11,12 @@ namespace GestorTareas.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<string>(
+                name: "NormalizedEmail",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: true);
+
             migrationBuilder.CreateTable(
                 name: "Priority",
                 columns: table => new
@@ -73,8 +79,8 @@ namespace GestorTareas.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    Subtitle = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Subtitle = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
                     Text = table.Column<string>(type: "text", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -140,6 +146,10 @@ namespace GestorTareas.Migrations
 
             migrationBuilder.DropTable(
                 name: "Status");
+
+            migrationBuilder.DropColumn(
+                name: "NormalizedEmail",
+                table: "Users");
         }
     }
 }
