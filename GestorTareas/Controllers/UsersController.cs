@@ -9,14 +9,15 @@ using GestorTareas.Data;
 using GestorTareas.Models.Entities;
 using GestorTareas.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
 
 namespace GestorTareas.Controllers
 {
     public class UsersController : Controller
     {
         private readonly UserManager<User> userManager;
-
         private readonly AppDbContext _context;
+        private readonly SignInManager<User> signInManager;
 
         // GET: Users
         public async Task<IActionResult> Index()
@@ -24,10 +25,11 @@ namespace GestorTareas.Controllers
             return View(await _context.Users.ToListAsync());
         }
 
-        public UsersController(UserManager<User> userManager, AppDbContext context)
+        public UsersController(UserManager<User> userManager, AppDbContext context, SignInManager<User> signInManager)
         {
             this.userManager = userManager;
             _context = context;
+            this.signInManager = signInManager;
         }
         public IActionResult Register ()
         {
@@ -47,6 +49,7 @@ namespace GestorTareas.Controllers
 
             if (resultado.Succeeded)
             {
+                await signInManager.SignInAsync(user, isPersistent: true);
                 return RedirectToAction("Index");
             } else
             {
@@ -59,8 +62,38 @@ namespace GestorTareas.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme);
+            return RedirectToAction("Index", "Home");
+        }
 
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var resultado = await signInManager.PasswordSignInAsync(model.Email, model.Password, false, lockoutOnFailure: false);
+            
+            if (resultado.Succeeded) {
+                return RedirectToAction("Index");
+            } else
+            {
+                ModelState.AddModelError(string.Empty, "Nombre de usuario o contraseña incorrectos");
+                return View(model);
+            }
+
+        }
         /*
 
 
