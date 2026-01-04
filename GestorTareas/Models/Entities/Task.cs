@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GestorTareas.Models.Interfaces;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GestorTareas.Models.Entities
 {
-    public class Task
+    public class Task : IAuditableEntity
     {
         public int Id { get; set; }
 

@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GestorTareas.Models.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace GestorTareas.Models.Entities
 {
-    public class User
+    public class User :IAuditableEntity
     {
         public int Id { get; set; }
 
