@@ -8,65 +8,88 @@
 
 <h4>Task</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="row justify-content-center">
+    <div class="col-md-4 shadow-sm p-4 rounded">
+        <form asp-action="Edit" class="needs-validation">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Subtitle" class="control-label"></label>
-                <input asp-for="Subtitle" class="form-control" />
-                <span asp-validation-for="Subtitle" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Text" class="control-label"></label>
-                <input asp-for="Text" class="form-control" />
-                <span asp-validation-for="Text" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedAt" class="control-label"></label>
-                <input asp-for="CreatedAt" class="form-control" />
-                <span asp-validation-for="CreatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpdatedAt" class="control-label"></label>
-                <input asp-for="UpdatedAt" class="form-control" />
-                <span asp-validation-for="UpdatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
-                <span asp-validation-for="UserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StatusId" class="control-label"></label>
-                <select asp-for="StatusId" class="form-control" asp-items="ViewBag.StatusId"></select>
-                <span asp-validation-for="StatusId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PriorityId" class="control-label"></label>
-                <select asp-for="PriorityId" class="form-control" asp-items="ViewBag.PriorityId"></select>
-                <span asp-validation-for="PriorityId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+
+            <div class="row g-3">
+                <!-- Title -->
+                <div class="col-md-6">
+                    <label asp-for="Title" class="form-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <!-- Subtitle -->
+                <div class="col-md-6">
+                    <label asp-for="Subtitle" class="form-label"></label>
+                    <input asp-for="Subtitle" class="form-control" />
+                    <span asp-validation-for="Subtitle" class="text-danger"></span>
+                </div>
+
+                <!-- ImageUrl -->
+                <div class="col-md-6">
+                    <label asp-for="ImageUrl" class="form-label"></label>
+                    <input asp-for="ImageUrl" class="form-control" />
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
+
+                <!-- Text -->
+                <div class="col-md-6">
+                    <label asp-for="Text" class="form-label"></label>
+                    <input asp-for="Text" class="form-control" />
+                    <span asp-validation-for="Text" class="text-danger"></span>
+                </div>
+
+                <!-- CreatedAt -->
+                <div class="col-md-6">
+                    <label asp-for="CreatedAt" class="form-label"></label>
+                    <input asp-for="CreatedAt" class="form-control" />
+                    <span asp-validation-for="CreatedAt" class="text-danger"></span>
+                </div>
+
+                <!-- UpdatedAt -->
+                <div class="col-md-6">
+                    <label asp-for="UpdatedAt" class="form-label"></label>
+                    <input asp-for="UpdatedAt" class="form-control" />
+                    <span asp-validation-for="UpdatedAt" class="text-danger"></span>
+                </div>
+
+                <!-- UserId -->
+                <div class="col-md-4">
+                    <label asp-for="UserId" class="form-label"></label>
+                    <select asp-for="UserId" class="form-select" asp-items="ViewBag.UserId"></select>
+                    <span asp-validation-for="UserId" class="text-danger"></span>
+                </div>
+
+                <!-- StatusId -->
+                <div class="col-md-4">
+                    <label asp-for="StatusId" class="form-label"></label>
+                    <select asp-for="StatusId" class="form-select" asp-items="ViewBag.StatusId"></select>
+                    <span asp-validation-for="StatusId" class="text-danger"></span>
+                </div>
+
+                <!-- PriorityId -->
+                <div class="col-md-4">
+                    <label asp-for="PriorityId" class="form-label"></label>
+                    <select asp-for="PriorityId" class="form-select" asp-items="ViewBag.PriorityId"></select>
+                    <span asp-validation-for="PriorityId" class="text-danger"></span>
+                </div>
+
+                <!-- Actions -->
+                <div class="col-12 d-flex justify-content-center gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+                </div>
             </div>
         </form>
+
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="text-center mt-4">
+    <a asp-action="Index" class="btn btn-outline-primary"><i class="fa-solid fa-angle-left"></i> Back to List</a>
 </div>
 
 @section Scripts {
