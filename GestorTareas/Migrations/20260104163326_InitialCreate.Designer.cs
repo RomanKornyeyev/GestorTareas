@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestorTareas.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251230211528_CreandoEntidadesRestantes")]
-    partial class CreandoEntidadesRestantes
+    [Migration("20260104163326_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
