@@ -7,77 +7,35 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Subtitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Text)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Priority)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="w-100 d-flex flex-wrap gap-5">
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subtitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Text)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Priority.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+        <div class="card" style="width: 30.5%; max-width: 30rem;">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">@Html.DisplayFor(modelItem => item.Subtitle)</h6>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Text)</p>
+                <a asp-action="Edit"
+                    asp-route-id="@item.Id"
+                    class="btn btn-outline-primary btn-sm">
+                    <i class="fa-solid fa-pen"></i>
+                </a>
+
+                <a asp-action="Details"
+                    asp-route-id="@item.Id"
+                    class="btn btn-primary btn-sm">
+                    <i class="fa-solid fa-eye"></i>
+                </a>
+
+                <a asp-action="Delete"
+                    asp-route-id="@item.Id"
+                    class="btn btn-danger btn-sm">
+                    <i class="fa-solid fa-trash"></i>
+                </a>
+            </div>
+        </div>
+
+    
 }
-    </tbody>
-</table>
+</div>
