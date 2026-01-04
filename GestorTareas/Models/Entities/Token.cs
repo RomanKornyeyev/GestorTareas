@@ -1,10 +1,11 @@
 ﻿using GestorTareas.Models.Entities;
+using GestorTareas.Models.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GestorTareas.Models.Entities
 {
-    public class Token
+    public class Token : IAuditableEntity
     {
         public int Id { get; set; }
 

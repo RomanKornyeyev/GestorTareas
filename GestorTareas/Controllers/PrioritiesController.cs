@@ -54,7 +54,7 @@ namespace GestorTareas.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,LevelPriority,CreatedAt,ModifiedAt")] Priority priority)
+        public async Task<IActionResult> Create([Bind("Id,Name,LevelPriority")] Priority priority)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace GestorTareas.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,LevelPriority,CreatedAt,ModifiedAt")] Priority priority)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,LevelPriority")] Priority priority)
         {
             if (id != priority.Id)
             {

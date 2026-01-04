@@ -63,7 +63,7 @@ namespace GestorTareas.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Subtitle,ImageUrl,Text,CreatedAt,UpdatedAt,UserId,StatusId,PriorityId")] TaskEntity task)
+        public async Task<IActionResult> Create([Bind("Id,Title,Subtitle,ImageUrl,Text,UserId,StatusId,PriorityId")] TaskEntity task)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace GestorTareas.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Subtitle,ImageUrl,Text,CreatedAt,UpdatedAt,UserId,StatusId,PriorityId")] TaskEntity task)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Subtitle,ImageUrl,Text,UserId,StatusId,PriorityId")] TaskEntity task)
         {
             if (id != task.Id)
             {
