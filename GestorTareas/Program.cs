@@ -11,7 +11,17 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserStore<User>, UserStore>();
+builder.Services.AddTransient<SignInManager<User>>();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddIdentityCore<User>();
+
+// Esto es para que nuestra aplicacion sepa como usar cookies y tal de autentificacion
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = IdentityConstants.ApplicationScheme;
+    options.DefaultChallengeScheme = IdentityConstants.ApplicationScheme;
+    options.DefaultSignOutScheme = IdentityConstants.ApplicationScheme;
+}).AddCookie(IdentityConstants.ApplicationScheme);
 
 // Registrar el DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -36,6 +46,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
